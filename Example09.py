@@ -4,12 +4,13 @@
 """
 ZetCode PyQt4 tutorial 
 
-This program creates a menubar. The
-menubar has one menu with an exit action.
+This program creates a toolbar.
+The toolbar has one action, which
+terminates the application if triggered.
 
 author: Jan Bodnar
 website: zetcode.com 
-last edited: August 2011
+last edited: September 2011
 """
 
 import sys
@@ -26,19 +27,19 @@ class Example(QtGui.QMainWindow):
         
     def initUI(self):               
         
-        exitAction = QtGui.QAction(QtGui.QIcon('image/Actions-application-exit-icon.png'), '&Exit', self)
+        exitAction = QtGui.QAction(QtGui.QIcon('image/Button-Log-Off-icon.png'), 'Exit', self)
         exitAction.setShortcut('Ctrl+Q')
-        exitAction.setStatusTip('Exit application')
         exitAction.triggered.connect(QtGui.qApp.quit)
+        exAction = QtGui.QAction(QtGui.QIcon('image/Apps-session-quit-icon.png'), 'Xair', self)
+        exAction.setShortcut('Ctrl+X')
+        exAction.triggered.connect(QtGui.qApp.quit)
 
-        self.statusBar()
+        self.toolbar = self.addToolBar('Exit')
+        self.toolbar.addAction(exitAction)
+        self.toolbar.addAction(exAction)
 
-        menubar = self.menuBar()
-        fileMenu = menubar.addMenu('&File')
-        fileMenu.addAction(exitAction)
-        
         self.setGeometry(300, 300, 300, 200)
-        self.setWindowTitle('Menubar')    
+        self.setWindowTitle('Toolbar')    
         self.show()
         
         
@@ -50,4 +51,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()    
+    main()
