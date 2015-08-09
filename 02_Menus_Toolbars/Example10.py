@@ -45,7 +45,8 @@ class Example(QtGui.QMainWindow):
         toolbar.addAction(exitAction)
         
         self.setGeometry(300, 300, 350, 250)
-        self.setWindowTitle('Main window')    
+        self.setWindowTitle('Main window')
+        self.setWindowIcon(QtGui.QIcon('image/Apps-pidgin-icon.png'))
         self.show()
         
         
